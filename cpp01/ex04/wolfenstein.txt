@@ -1,0 +1,19 @@
+Following Wolfenstein 3D, John Carmack and John Romero continued their common
+adventure. Once realizing some additional levels for Wolf3D special editions, they started
+wotking on the sequel. Bigger, better, stronger. Towards the end of 1993, they released
+Doom, another first-person shoot’em up. The immersion is even more intense, the atmosphere is even more engaging, and Doom immediately became, and remained, a reference
+in video games.
+
+In the UAC’s (Union Aerospace Corporation) premises on Mars, you play an exMarine who has to clean the base of a whole bunch of monsters coming straight from
+hell. These appeared because of radioactive experiments that created a breach in spacetime. Each monster uglier than the one before, up to the huge final boss, you’re going
+to need all the weapons available to defeat them. Ultra violent gameplay, tempo set by
+the Heavy Metal soundtrack, even today you can’t call yourself a gamer if you’ve never
+played it.
+
+As the the ID Software adventures were unfolding, another universe was built in another video game company: Apogee Software. As early as 1991, in Los Angeles invaded
+by aliens, Duke Nukem is fighting to take them down. At the time, it’s only a Mario-style
+2D platform. After a swift incursion in space for the second scenario in 1993, the 1996
+third version is a 3D, first person game. With more visual effects than Doom, a cartoonlike design and lots of sex, violence, cult dialogues and off-beat humor, this third opus is
+a dazzling success. Released under the Apogee Software’s 3D Realms brand, Duke Nukem
+3D becomes Doom’s rightful heir in the realm of pseudo 3D games, before the emergence
+of GPUs and hardware acceleration to create full 3D.
