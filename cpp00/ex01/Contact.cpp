@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 19:58:08 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/19 21:36:17 by fbes          ########   odam.nl         */
+/*   Updated: 2022/05/19 21:40:34 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	Contact::set_detail(std::string item_name, std::string* item)
 	if (std::cin.eof()) // on EOF (Ctrl + D), exit the program with an error
 		exit(1);
 	strip_non_printable_chars(*item);
-	if ((*item).length() > 0)
+	if (!(*item).empty())
 		return (true);
 	std::cout << "Invalid input" << std::endl;
 	return (false);

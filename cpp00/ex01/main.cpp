@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 19:49:46 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/19 21:36:31 by fbes          ########   odam.nl         */
+/*   Updated: 2022/05/19 21:42:31 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(void)
 			phonebook.cmd_search();
 		else if (command == "EXIT")
 			return (phonebook.cmd_exit(0));
-		else if (command.length() > 0)
+		else if (!command.empty())
 			std::cout << "Unknown command" << std::endl;
 		std::cout << "@ ";
 	}

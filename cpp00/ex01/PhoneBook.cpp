@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 19:58:12 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/19 21:38:43 by fbes          ########   odam.nl         */
+/*   Updated: 2022/05/19 21:40:52 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ bool	PhoneBook::contact_chooser(size_t *index, bool require_mod)
 	std::getline(std::cin, index_str);
 	if (std::cin.eof()) // on EOF (Ctrl + D), exit the program with an error
 		exit(1);
-	if (index_str.length() == 0) // if string is empty, redisplay without showing "invalid index"
+	if (index_str.empty()) // if string is empty, redisplay without showing "invalid index"
 		return (false);
 	if (!is_fully_numeric_string(index_str)) // invalid index: string contains non-numeric characters
 		return (contact_chooser_invalid_index());
