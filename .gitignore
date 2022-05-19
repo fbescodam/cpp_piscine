@@ -38,3 +38,6 @@
 
 # Any dSYM shit
 *.dSYM
+
+# More
+.vscode

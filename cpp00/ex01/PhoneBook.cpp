@@ -6,13 +6,13 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 19:58:12 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/19 21:29:45 by fbes          ########   odam.nl         */
+/*   Updated: 2022/05/19 21:38:43 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#include <iostream>
 #include <iomanip>
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void)
 {

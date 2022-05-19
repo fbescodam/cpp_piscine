@@ -6,12 +6,13 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 19:58:08 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/19 21:20:37 by fbes          ########   odam.nl         */
+/*   Updated: 2022/05/19 21:36:17 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
 #include <iomanip>
+#include <iostream>
+#include "Contact.hpp"
 
 static bool is_non_printable_char(char c)
 {

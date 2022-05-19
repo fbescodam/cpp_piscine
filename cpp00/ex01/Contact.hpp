@@ -6,12 +6,12 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 19:50:32 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/19 21:00:55 by fbes          ########   odam.nl         */
+/*   Updated: 2022/05/19 21:37:02 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <iostream>
+#include <string>
 
 class Contact
 {
