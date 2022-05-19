@@ -6,7 +6,7 @@
 #    By: fbes <fbes@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/05/18 19:09:49 by fbes          #+#    #+#                  #
-#    Updated: 2022/05/18 22:05:48 by fbes          ########   odam.nl          #
+#    Updated: 2022/05/19 21:44:53 by fbes          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INCLUDES =
 
 OBJS =		$(SRCS:.cpp=.o)
 
-CFLAGS =	-g -std=c++98 -Wall -Werror -Wextra
+CFLAGS =	-std=c++98 -Wall -Werror -Wextra
 
 
 all: $(NAME)
