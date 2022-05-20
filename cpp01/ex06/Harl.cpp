@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 01:49:50 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/20 02:26:13 by fbes          ########   odam.nl         */
+/*   Updated: 2022/05/20 03:52:58 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ void Harl::complain(std::string level)
 			this->warning();
 		case 3:
 			this->error();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 }

@@ -6,29 +6,19 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 01:50:48 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/20 02:27:41 by fbes          ########   odam.nl         */
+/*   Updated: 2022/05/20 03:53:43 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Harl.hpp"
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	Harl	harl;
 
-	std::cout << "Debug and above" << std::endl;
-	harl.complain("DEBUG");
-
-	std::cout << std::endl << "Info and above" << std::endl;
-	harl.complain("INFO");
-
-	std::cout << std::endl << "Warning and above" << std::endl;
-	harl.complain("WARNING");
-
-	std::cout << std::endl << "Error and above" << std::endl;
-	harl.complain("ERROR");
-
-	std::cout << std::endl << "Info and above" << std::endl;
-	harl.complain("INFO");
+	if (argc > 1)
+		harl.complain(argv[1]);
+	else
+		std::cerr << "Error: missing argument" << std::endl;
 }
