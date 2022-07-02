@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 21:52:58 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/19 22:01:45 by fbes          ########   odam.nl         */
+/*   Updated: 2022/07/02 12:56:24 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Zombie
 
 		void			announce(void);
 		void			setName(std::string name);
+		static Zombie*	zombieHorde(int N, std::string name);
 
 
 	private:
