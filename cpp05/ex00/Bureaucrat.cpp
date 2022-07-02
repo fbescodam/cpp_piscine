@@ -6,10 +6,11 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:15 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/23 18:37:43 by fbes          ########   odam.nl         */
+/*   Updated: 2022/07/02 13:28:16 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Bureaucrat.hpp"
 
 // constructors
@@ -20,13 +21,15 @@ Bureaucrat::Bureaucrat(std::string name, unsigned short grade): name(name)
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	this->grade = grade;
+	std::cout << "Create bureaucrat " << this->name << " with level " << this->grade << std::endl;
 }
 
 
 // copy constructor
-Bureaucrat::Bureaucrat(const Bureaucrat& other)
+Bureaucrat::Bureaucrat(const Bureaucrat& other): name(other.name)
 {
 	this->grade = other.grade;
+	std::cout << "Copy by constructor bureaucrat " << this->name << " with level " << this->grade << std::endl;
 }
 
 
@@ -37,13 +40,14 @@ Bureaucrat& Bureaucrat::operator = (const Bureaucrat& other)
 		return (*this);
 	this->grade = other.grade;
 	return (*this);
+	std::cout << "Copy by assignment bureaucrat " << this->name << " with level " << this->grade << std::endl;
 }
 
 
 // destructor
 Bureaucrat::~Bureaucrat(void)
 {
-
+	std::cout << "Destructed bureaucrat " << this->name << " with level " << this->grade << std::endl;
 }
 
 
@@ -65,7 +69,7 @@ const std::string&	Bureaucrat::getName(void) const
 	return this->name;
 }
 
-unsigned short&	Bureaucrat::getGrade(void)
+const unsigned short&	Bureaucrat::getGrade(void) const
 {
 	return this->grade;
 }

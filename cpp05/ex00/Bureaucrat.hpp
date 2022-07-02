@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:17 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/23 18:37:07 by fbes          ########   odam.nl         */
+/*   Updated: 2022/07/02 13:21:59 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ class Bureaucrat
 		};
 
 		// getters
-		const std::string&	getName(void) const;
-		unsigned short&		getGrade(void);
+		const std::string&		getName(void) const;
+		const unsigned short&	getGrade(void) const;
 
 		// modifiers
 		unsigned short&		incrementGrade(void);
