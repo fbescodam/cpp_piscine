@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:19 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 13:28:43 by fbes          ########   odam.nl         */
+/*   Updated: 2022/07/02 13:32:56 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,12 @@ int		main(void)
 	try
 	{
 		std::cout << "Attempt to create bureaucrat with level 10 and increment level 15 times" << std::endl;
-		Bureaucrat*	brocrat = new Bureaucrat("A", 10);
+		Bureaucrat brocrat("A", 10);
 		for (int i = 0; i < 15; i++) {
-			brocrat->incrementGrade();
-			std::cout << "Bureaucrat " << brocrat->getName() << " reached grade " << brocrat->getGrade() << std::endl;
+			brocrat.incrementGrade();
+			std::cout << "Bureaucrat " << brocrat.getName() << " reached grade " << brocrat.getGrade() << std::endl;
 		}
 		std::cout << "Success" << std::endl;
-		delete brocrat;
 	}
 	catch (Bureaucrat::GradeTooHighException exception)
 	{
@@ -97,7 +96,7 @@ int		main(void)
 		std::cout << "Bureaucrat::GradeTooLowException thrown and catched" << std::endl;
 	}
 
-	std::cout << std::endl;
+	std::cout << "Did you see bureaucrat A getting destructed here without a delete statement? Garbage cleanup on scopes!" << std::endl << std::endl;
 
 	try
 	{
@@ -119,5 +118,6 @@ int		main(void)
 		std::cout << "Bureaucrat::GradeTooLowException thrown and catched" << std::endl;
 	}
 
+	std::cout << std::endl;
 	system("leaks bureaucrats");
 }
