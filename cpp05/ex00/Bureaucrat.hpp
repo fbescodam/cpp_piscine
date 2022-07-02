@@ -6,12 +6,13 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:17 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 13:21:59 by fbes          ########   odam.nl         */
+/*   Updated: 2022/07/02 14:02:59 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <string>
+#include <iostream>
 
 class Bureaucrat
 {
@@ -51,3 +52,6 @@ class Bureaucrat
 		const std::string	name;
 		unsigned short		grade;
 };
+
+// insertion operator
+std::ostream& operator << (std::ostream &out, const Bureaucrat& brocrat);

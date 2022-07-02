@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:15 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 13:28:16 by fbes          ########   odam.nl         */
+/*   Updated: 2022/07/02 14:03:11 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other): name(other.name)
 	std::cout << "Copy by constructor bureaucrat " << this->name << " with level " << this->grade << std::endl;
 }
 
-
 // copy assignment
 Bureaucrat& Bureaucrat::operator = (const Bureaucrat& other)
 {
@@ -42,7 +41,6 @@ Bureaucrat& Bureaucrat::operator = (const Bureaucrat& other)
 	return (*this);
 	std::cout << "Copy by assignment bureaucrat " << this->name << " with level " << this->grade << std::endl;
 }
-
 
 // destructor
 Bureaucrat::~Bureaucrat(void)
@@ -90,4 +88,12 @@ unsigned short&	Bureaucrat::decrementGrade(void)
 		throw Bureaucrat::GradeTooLowException();
 	this->grade++;
 	return this->grade;
+}
+
+
+// insertion operator
+std::ostream& operator << (std::ostream &out, const Bureaucrat& brocrat)
+{
+	out << brocrat.getName() << ", bureaucrat grade " << brocrat.getGrade() << ".";
+	return (out);
 }

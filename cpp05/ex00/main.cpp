@@ -6,16 +6,17 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:19 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 13:32:56 by fbes          ########   odam.nl         */
+/*   Updated: 2022/07/02 14:04:33 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include <iostream>
+#include "Bureaucrat.hpp"
 
 int		main(void)
 {
 	Bureaucrat copyFrom("CopyMe", 20);
+	std::cout << copyFrom << std::endl;
 
 	try
 	{
@@ -26,7 +27,7 @@ int		main(void)
 		std::cout << "Name: " << brocrat->getName() << ", Grade: " << brocrat->getGrade() << std::endl;
 		std::cout << "Attempt to copy bureaucrat copyFrom's details to brocrat" << std::endl;
 		*brocrat = copyFrom;
-		std::cout << "Name: " << brocrat->getName() << ", Grade: " << brocrat->getGrade() << std::endl;
+		std::cout << *brocrat << std::endl;
 		std::cout << "Success" << std::endl;
 		delete brocrat;
 	}
@@ -83,7 +84,7 @@ int		main(void)
 		Bureaucrat brocrat("A", 10);
 		for (int i = 0; i < 15; i++) {
 			brocrat.incrementGrade();
-			std::cout << "Bureaucrat " << brocrat.getName() << " reached grade " << brocrat.getGrade() << std::endl;
+			std::cout << brocrat << std::endl;
 		}
 		std::cout << "Success" << std::endl;
 	}
@@ -104,7 +105,7 @@ int		main(void)
 		Bureaucrat*	brocrat = new Bureaucrat("B", 140);
 		for (int i = 0; i < 15; i++) {
 			brocrat->decrementGrade();
-			std::cout << "Bureaucrat " << brocrat->getName() << " reached grade " << brocrat->getGrade() << std::endl;
+			std::cout << *brocrat << std::endl;
 		}
 		std::cout << "Success" << std::endl;
 		delete brocrat;
