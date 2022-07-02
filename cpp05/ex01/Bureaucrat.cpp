@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 // constructors
 Bureaucrat::Bureaucrat(std::string name, unsigned short grade): name(name)
@@ -88,6 +89,26 @@ unsigned short&	Bureaucrat::decrementGrade(void)
 		throw Bureaucrat::GradeTooLowException();
 	this->grade++;
 	return this->grade;
+}
+
+
+// methods
+bool Bureaucrat::signForm(Form& form)
+{
+	try {
+		if (!form.beSigned(*this))
+		{
+			std::cout << this->name << " couldn't sign form " << form.getName() << " because it is already signed" << std::endl;
+			return (false);
+		}
+		std::cout << this->name << " signed " << form.getName() << std::endl;
+		return (true);
+	}
+	catch (Form::GradeTooLowException exception)
+	{
+		std::cout << this->name << " couldn't sign form " << form.getName() << " because their grade is not higher than or equal to the grade required for signing" << std::endl;
+	}
+	return (false);
 }
 
 

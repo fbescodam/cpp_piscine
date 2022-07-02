@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:19 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 14:04:33 by fbes          ########   odam.nl         */
+/*   Updated: 2022/07/02 14:58:24 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		main(void)
 
 	try
 	{
-		std::cout << "Attempt to create bureaucrat with level 0" << std::endl;
+		std::cout << "Attempt to create bureaucrat with grade 0" << std::endl;
 		Bureaucrat*	brocrat = new Bureaucrat("Useless", 0);
 		std::cout << "Success" << std::endl;
 		delete brocrat;
@@ -62,7 +62,7 @@ int		main(void)
 
 	try
 	{
-		std::cout << "Attempt to create bureaucrat with level 240" << std::endl;
+		std::cout << "Attempt to create bureaucrat with grade 240" << std::endl;
 		Bureaucrat*	brocrat = new Bureaucrat("Big", 240);
 		std::cout << "Success" << std::endl;
 		delete brocrat;
@@ -80,7 +80,7 @@ int		main(void)
 
 	try
 	{
-		std::cout << "Attempt to create bureaucrat with level 10 and increment level 15 times" << std::endl;
+		std::cout << "Attempt to create bureaucrat with grade 10 and increment grade 15 times" << std::endl;
 		Bureaucrat brocrat("A", 10);
 		for (int i = 0; i < 15; i++) {
 			brocrat.incrementGrade();
@@ -101,7 +101,7 @@ int		main(void)
 
 	try
 	{
-		std::cout << "Attempt to create bureaucrat with level 140 and decrement level 15 times" << std::endl;
+		std::cout << "Attempt to create bureaucrat with grade 140 and decrement grade 15 times" << std::endl;
 		Bureaucrat*	brocrat = new Bureaucrat("B", 140);
 		for (int i = 0; i < 15; i++) {
 			brocrat->decrementGrade();
