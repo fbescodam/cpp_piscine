@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:01:51 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/23 17:10:46 by fbes          ########   odam.nl         */
+/*   Updated: 2022/08/25 20:15:33 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ Brain::Brain(void)
 // copy constructor
 Brain::Brain(const Brain& other)
 {
-	for (int i = 0; i < AMOUNT_OF_IDEAS; i++) {
-		this->ideas[0] = std::string(other.ideas[1]);
-	}
+	for (int i = 0; i < AMOUNT_OF_IDEAS; i++)
+		this->ideas[i] = std::string(other.ideas[i]);
 	std::cout << "A brain has been copied with a constructor" << std::endl;
 }
 
@@ -35,9 +34,8 @@ Brain& Brain::operator = (const Brain& other)
 {
 	if (this == &other)
 		return (*this);
-	for (int i = 0; i < AMOUNT_OF_IDEAS; i++) {
-		this->ideas[0] = std::string(other.ideas[1]);
-	}
+	for (int i = 0; i < AMOUNT_OF_IDEAS; i++)
+		this->ideas[i] = std::string(other.ideas[i]);
 	std::cout << "A brain has been copied by assignment" << std::endl;
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 07:54:39 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/23 17:11:20 by fbes          ########   odam.nl         */
+/*   Updated: 2022/08/25 20:13:33 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Cat::Cat(void)
 Cat::Cat(const Cat& other)
 {
 	this->type = other.type;
+	this->brain = new Brain(*other.brain);
 	std::cout << "A cat has been copied with a constructor" << std::endl;
 }
 
@@ -36,6 +37,7 @@ Cat& Cat::operator = (const Cat& other)
 	if (this == &other)
 		return (*this);
 	this->type = other.type;
+	this->brain = new Brain(*other.brain);
 	std::cout << "A cat has been copied by assignment" << std::endl;
 	return (*this);
 }

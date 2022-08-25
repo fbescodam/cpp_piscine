@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 07:54:15 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/23 17:39:43 by fbes          ########   odam.nl         */
+/*   Updated: 2022/08/25 20:15:57 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ int main()
 	for (i = 0; i < amount; i++) {
 		animals[i]->makeSound();
 	}
-	for (i = 0; i < amount; i++) {
+	for (i = 0; i < amount; i++)
 		delete animals[i];
-	}
-	system("leaks animals");
+	// system("leaks animals");
 	return 0;
 }

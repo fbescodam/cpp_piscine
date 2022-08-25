@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 07:54:39 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/23 17:09:41 by fbes          ########   odam.nl         */
+/*   Updated: 2022/08/25 20:13:15 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Dog::Dog(void)
 Dog::Dog(const Dog& other)
 {
 	this->type = other.type;
+	this->brain = new Brain(*other.brain);
 	std::cout << "A dog has been copied with a constructor" << std::endl;
 }
 
@@ -36,6 +37,7 @@ Dog& Dog::operator = (const Dog& other)
 	if (this == &other)
 		return (*this);
 	this->type = other.type;
+	this->brain = new Brain(*other.brain);
 	std::cout << "A dog has been copied by assignment" << std::endl;
 	return (*this);
 }
