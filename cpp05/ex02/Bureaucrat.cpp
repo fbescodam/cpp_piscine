@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:15 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 17:34:54 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 18:53:47 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ bool Bureaucrat::signForm(Form& form)
 bool Bureaucrat::executeForm(const Form& form)
 {
 	try {
+		std::cout << this->name << " executed " << form.getName() << std::endl;
 		form.execute(*this);
 		return (true);
 	}
