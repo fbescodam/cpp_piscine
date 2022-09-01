@@ -6,13 +6,12 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:19 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 18:52:04 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 19:27:28 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -35,7 +34,8 @@ int		main(void)
 	std::cout << std::endl;
 
 	PresidentialPardonForm pardon("Zaphod Beeblebrox");
-	assistant.signForm(pardon);
+	mayor.signForm(pardon);
+	assistant.executeForm(pardon);
 	mayor.executeForm(pardon);
 	std::cout << std::endl;
 

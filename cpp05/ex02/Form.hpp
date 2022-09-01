@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/02 14:06:42 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 17:28:18 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 19:40:49 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Form
 		Form& operator = (const Form& other);
 
 		// destructor
-		~Form(void);
+		virtual ~Form(void);
 
 		// exceptions
 		class GradeTooHighException: public std::exception {
