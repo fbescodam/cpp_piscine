@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:19 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 14:59:06 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 16:52:43 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,21 @@ int		main(void)
 
 	std::cout << std::endl;
 	try {
-		Form notWorking("Woah It Does Not Work, How Unexpected", 3000, -230);
+		Form notWorking("Woah It Does Not Work, How Unexpected", 3000, 0);
 	}
 	catch (Form::GradeTooHighException& e) {
 		std::cout << "Form creation failed because " << e.what() << std::endl;
 	}
 	catch (Form::GradeTooLowException& e) {
 		std::cout << "Form creation failed because " << e.what() << std::endl;
+	}
+	try {
+		Form notWorking("Woah It Does Not Work 2, How Unexpected", 12, 255);
+	}
+	catch (Form::GradeTooHighException& e) {
+		std::cout << "Form creation 2 failed because " << e.what() << std::endl;
+	}
+	catch (Form::GradeTooLowException& e) {
+		std::cout << "Form creation 2 failed because " << e.what() << std::endl;
 	}
 }

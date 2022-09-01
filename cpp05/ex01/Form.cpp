@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/02 14:06:40 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 14:59:46 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 16:53:04 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Form::Form(const std::string name, const unsigned short reqGradeExec, const unsi
 	this->formSigned = false;
 	if (this->reqGradeExec < 1 || this->reqGradeSign < 1)
 		throw Form::GradeTooHighException();
-	if (this->reqGradeExec > 150 || this->reqGradeExec > 150)
+	if (this->reqGradeExec > 150 || this->reqGradeSign > 150)
 		throw Form::GradeTooLowException();
 	std::cout << "Constructed " << *this << std::endl;
 }
