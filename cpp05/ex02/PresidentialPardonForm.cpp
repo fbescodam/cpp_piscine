@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 05:53:18 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 18:49:41 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 19:06:38 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator = (const PresidentialPa
 {
 	if (this == &other)
 		return (*this);
+	Form::operator=(other);
 	std::cout << "Copy PresidentialPardonForm by assignment " << *this << std::endl;
 	return (*this);
 }
