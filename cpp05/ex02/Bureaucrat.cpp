@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:15 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 18:53:47 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 18:57:16 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ bool Bureaucrat::signForm(Form& form)
 	try {
 		if (!form.beSigned(*this))
 		{
-			std::cout << this->name << " couldn't sign form " << form.getName() << " because it is already signed" << std::endl;
+			std::cerr << this->name << " couldn't sign form " << form.getName() << " because it is already signed" << std::endl;
 			return (false);
 		}
 		std::cout << this->name << " signed " << form.getName() << std::endl;
 		return (true);
 	}
 	catch (Form::GradeTooLowException exception) {
-		std::cout << this->name << " couldn't sign form " << form.getName() << " because their grade is not higher than or equal to the grade required for signing" << std::endl;
+		std::cerr << this->name << " couldn't sign form " << form.getName() << " because their grade is not higher than or equal to the grade required for signing" << std::endl;
 	}
 	return (false);
 }
@@ -118,10 +118,10 @@ bool Bureaucrat::executeForm(const Form& form)
 		return (true);
 	}
 	catch (Form::NotSignedException exception) {
-		std::cout << this->name << " couldn't execute form " << form.getName() << " because it has not been signed yet" << std::endl;
+		std::cerr << this->name << " couldn't execute form " << form.getName() << " because it has not been signed yet" << std::endl;
 	}
 	catch (Form::GradeTooLowException exception) {
-		std::cout << this->name << " couldn't execute form " << form.getName() << " because their grade is not higher than or equal to the grade required for execution" << std::endl;
+		std::cerr << this->name << " couldn't execute form " << form.getName() << " because their grade is not higher than or equal to the grade required for execution" << std::endl;
 	}
 	return (false);
 }
