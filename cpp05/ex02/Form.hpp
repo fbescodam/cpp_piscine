@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/02 14:06:42 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 17:08:23 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 17:28:18 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ class Form
 		// execution
 		void				execute(const Bureaucrat& executor) const;
 		// above is the same as execute(Bureaucrat const& executor) const;
-		virtual void		onExecute(const Bureaucrat& executor) const = 0;
+		virtual void		onExecute(void) const = 0;
 
 	private:
 		const unsigned short	reqGradeExec;

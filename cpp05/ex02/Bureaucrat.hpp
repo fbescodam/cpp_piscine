@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:17 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 14:31:30 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 17:29:19 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ class Bureaucrat
 
 		// functions
 		bool				signForm(Form& form);
+		bool				executeForm(const Form& form);
 
 
 	private:

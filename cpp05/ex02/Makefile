@@ -6,15 +6,15 @@
 #    By: fbes <fbes@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/05/23 17:47:21 by fbes          #+#    #+#                  #
-#    Updated: 2022/07/02 14:27:10 by fbes          ########   odam.nl          #
+#    Updated: 2022/09/01 17:17:24 by fbes          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		formfillers
 
-HEADERS =	Form.hpp Bureaucrat.hpp
+HEADERS =	Form.hpp Bureaucrat.hpp ShrubberyCreationForm.hpp
 
-SRCS =		Form.cpp Bureaucrat.cpp main.cpp
+SRCS =		Form.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp main.cpp
 
 INCLUDES =
 

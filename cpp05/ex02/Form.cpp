@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/02 14:06:40 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 17:07:08 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 17:28:27 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void Form::execute(const Bureaucrat& brocrat) const
 		throw Form::GradeTooLowException();
 	else if (!this->formSigned)
 		throw Form::NotSignedException();
-	this->onExecute(brocrat);
+	this->onExecute();
 }
 
 
