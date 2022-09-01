@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 05:53:18 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 18:49:48 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 18:54:33 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void ShrubberyCreationForm::onExecute(void) const
 	file.open(this->target + "_shrubbery", std::fstream::out);
 	if (!file.good())
 	{
-		std::cerr << "Error: could not open file " << this->target << "_shrubbery" << std::endl;
-		exit(1);
+		std::cout << "Error: could not open file " << this->target << "_shrubbery" << std::endl;
+		return;
 	}
 	for (int i = 0; i < TREES_AMOUNT; i++)
 		file << ASCII_TREE << std::endl;
