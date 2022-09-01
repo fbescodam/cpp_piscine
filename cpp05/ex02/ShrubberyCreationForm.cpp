@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 05:53:18 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 17:40:52 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 18:49:48 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // constructors
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
-: Form("ShrubberyCreationForm", 145, 137), target(target)
+: Form("ShrubberyCreationForm", 137, 145), target(target)
 {
 	std::cout << "Constructed ShrubberyCreationForm " << *this << std::endl;
 }
@@ -34,7 +34,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator = (const ShrubberyCreatio
 {
 	if (this == &other)
 		return (*this);
-	std::cout << "Copy ShrubberyCreationForm by assingment " << *this << std::endl;
+	std::cout << "Copy ShrubberyCreationForm by assignment " << *this << std::endl;
 	return (*this);
 }
 

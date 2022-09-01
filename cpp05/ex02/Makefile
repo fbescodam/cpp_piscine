@@ -6,15 +6,17 @@
 #    By: fbes <fbes@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/05/23 17:47:21 by fbes          #+#    #+#                  #
-#    Updated: 2022/09/01 17:17:24 by fbes          ########   odam.nl          #
+#    Updated: 2022/09/01 18:47:41 by fbes          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		formfillers
 
-HEADERS =	Form.hpp Bureaucrat.hpp ShrubberyCreationForm.hpp
+HEADERS =	Form.hpp Bureaucrat.hpp ShrubberyCreationForm.hpp \
+			RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
-SRCS =		Form.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp main.cpp
+SRCS =		Form.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp PresidentialPardonForm.cpp main.cpp
 
 INCLUDES =
 
@@ -36,6 +38,7 @@ bonus:
 
 clean:
 	rm -f $(OBJS)
+	rm -f *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)
