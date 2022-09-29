@@ -6,13 +6,14 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 12:17:20 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 14:51:55 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/29 15:13:43 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cmath>
 #include <iostream>
 #include <sstream>
+#include <iomanip>
 #include "scalar.hpp"
 
 static void invalidInput(void)
@@ -89,8 +90,9 @@ static void printOutput(const output_t& out)
 	}
 	else
 		std::cout << "char: impossible" << std::endl << "int: impossible" << std::endl;
-	std::cout << "float: " << out.f << (floor(out.f) == out.f ? ".0" : "") << "f" << std::endl;
-	std::cout << "double: " << out.d << (floor(out.d) == out.d ? ".0" : "") << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << out.f << "f" << std::endl;
+	std::cout << "double: " << out.d << std::endl;
 }
 
 int main(int argc, char** argv)
