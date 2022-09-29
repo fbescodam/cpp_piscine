@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 12:17:20 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 15:20:50 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/29 15:25:05 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,19 @@ static literal_t getLiteralType(const std::string& str)
 {
 	if (str == "nan")
 		return FLOAT_L;
-	if (str.find_first_not_of("0123456789.f") != std::string::npos
-		|| (str == "f" || str == "."))
+	if (str.find_first_not_of("-0123456789.f") != std::string::npos
+		|| str == "-" || str == "f" || str == ".")
 	{
+		// TODO: fix spaces
 		if (str.length() != 1)
 			invalidInput();
 		return CHAR_L;
 	}
 	if (str.find_first_of(".") == std::string::npos)
 	{
-		if (str.find_first_not_of("0123456789") != std::string::npos)
+		if (str.find_first_not_of("-0123456789") != std::string::npos)
+			invalidInput();
+		if (str.find_first_of("-", 1) != std::string::npos)
 			invalidInput();
 		return INT_L;
 	}
