@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 12:17:20 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 14:34:08 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/29 14:51:55 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void invalidInput(void)
 	exit(1);
 }
 
-static enum::literal_e getLiteralType(const std::string& str)
+static literal_t getLiteralType(const std::string& str)
 {
 	if (str == "nan")
 		return FLOAT_L;
@@ -45,63 +45,60 @@ static enum::literal_e getLiteralType(const std::string& str)
 	return FLOAT_L;
 }
 
-static void convert_char(char& c)
+static void convertChar(const char& c, output_t& out)
 {
-	if (isprint(c))
-		std::cout << "char: " << c << std::endl;
-	else
-		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(c) << std::endl;
+	out.c = c;
+	out.i = static_cast<int>(c);
+	out.f = static_cast<float>(c);
+	out.d = static_cast<double>(c);
 }
 
-static void convert_int(int& i)
+static void convertInt(const int& i, output_t& out)
 {
-	char c = static_cast<char>(i);
-	if (isprint(c))
-		std::cout << "char: " << c << std::endl;
-	else
-		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << i << std::endl;
-	std::cout << "float: " << static_cast<float>(i) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(i) << std::endl;
+	out.c = static_cast<char>(i);
+	out.i = i;
+	out.f = static_cast<float>(i);
+	out.d = static_cast<double>(i);
 }
 
-static void convert_float(float& f)
+static void convertFloat(const float& f, output_t& out)
 {
-	if (std::isnan(f))
-		std::cout << "char: impossible" << std::endl << "int: impossible" << std::endl;
-	else
+	out.c = static_cast<char>(f);
+	out.i = static_cast<int>(f);
+	out.f = f;
+	out.d = static_cast<double>(f);
+}
+
+static void convertDouble(const double& d, output_t& out)
+{
+	out.c = static_cast<char>(d);
+	out.i = static_cast<int>(d);
+	out.f = static_cast<float>(d);
+	out.d = d;
+}
+
+static void printOutput(const output_t& out)
+{
+	if (!isnan(out.f))
 	{
-		char c = static_cast<char>(f);
-		if (isprint(c))
-			std::cout << "char: " << c << std::endl;
+		if (isprint(out.c))
+			std::cout << "char: " << out.c << std::endl;
 		else
 			std::cout << "char: Non displayable" << std::endl;
-		std::cout << "int: " << static_cast<int>(f) << std::endl;
+		std::cout << "int: " << out.i << std::endl;
 	}
-	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(f) << std::endl;
-}
-
-static void convert_double(double& d)
-{
-	char c = static_cast<char>(d);
-	if (isprint(c))
-		std::cout << "char: " << c << std::endl;
 	else
-		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << static_cast<int>(d) << std::endl;
-	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+		std::cout << "char: impossible" << std::endl << "int: impossible" << std::endl;
+	std::cout << "float: " << out.f << (floor(out.f) == out.f ? ".0" : "") << "f" << std::endl;
+	std::cout << "double: " << out.d << (floor(out.d) == out.d ? ".0" : "") << std::endl;
 }
 
 int main(int argc, char** argv)
 {
-	union input in;
-	enum::literal_e type;
-	std::stringstream ss;
+	std::stringstream	ss;
+	input_t				in;
+	literal_t			type;
+	output_t			out;
 
 	if (argc < 2)
 	{
@@ -117,19 +114,19 @@ int main(int argc, char** argv)
 		{
 			case CHAR_L:
 				ss >> in.c;
-				convert_char(in.c);
+				convertChar(in.c, out);
 				break;
 			case INT_L:
 				ss >> in.i;
-				convert_int(in.i);
+				convertInt(in.i, out);
 				break;
 			case FLOAT_L:
 				ss >> in.f;
-				convert_float(in.f);
+				convertFloat(in.f, out);
 				break;
 			case DOUBLE_L:
 				ss >> in.d;
-				convert_double(in.d);
+				convertDouble(in.d, out);
 				break;
 		}
 	}
@@ -138,5 +135,7 @@ int main(int argc, char** argv)
 		std::cerr << "Error: conversion failed" << std::endl;
 		return (1);
 	}
+
+	printOutput(out);
 	return (0);
 }
