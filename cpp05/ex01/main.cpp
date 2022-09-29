@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:19 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 14:59:06 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 18:57:05 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,29 @@ int		main(void)
 		std::cout << std::endl;
 	}
 	catch (Form::GradeTooHighException& e) {
-		std::cout << "Form creation failed because " << e.what() << std::endl;
+		std::cerr << "Form creation failed because " << e.what() << std::endl;
 	}
 	catch (Form::GradeTooLowException& e) {
-		std::cout << "Form creation failed because " << e.what() << std::endl;
+		std::cerr << "Form creation failed because " << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
 	try {
-		Form notWorking("Woah It Does Not Work, How Unexpected", 3000, -230);
+		Form notWorking("Woah It Does Not Work, How Unexpected", 3000, 0);
 	}
 	catch (Form::GradeTooHighException& e) {
-		std::cout << "Form creation failed because " << e.what() << std::endl;
+		std::cerr << "Form creation failed because " << e.what() << std::endl;
 	}
 	catch (Form::GradeTooLowException& e) {
-		std::cout << "Form creation failed because " << e.what() << std::endl;
+		std::cerr << "Form creation failed because " << e.what() << std::endl;
+	}
+	try {
+		Form notWorking("Woah It Does Not Work 2, How Unexpected", 12, 255);
+	}
+	catch (Form::GradeTooHighException& e) {
+		std::cerr << "Form creation 2 failed because " << e.what() << std::endl;
+	}
+	catch (Form::GradeTooLowException& e) {
+		std::cerr << "Form creation 2 failed because " << e.what() << std::endl;
 	}
 }

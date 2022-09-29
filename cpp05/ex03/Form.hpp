@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/02 14:06:42 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 11:55:53 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 19:40:26 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ class Bureaucrat;
 class Form
 {
 	public:
+		// constructors
+		Form(const std::string name, const unsigned short reqGradeExec, const unsigned short reqGradeSign);
+
+		// copy constructor
+		Form(const Form& other);
+
 		// copy assignment operator
-		virtual Form& operator = (const Form& other);
+		Form& operator = (const Form& other);
 
 		// destructor
 		virtual ~Form(void);
@@ -51,13 +57,6 @@ class Form
 		void				execute(const Bureaucrat& executor) const;
 		// above is the same as execute(Bureaucrat const& executor) const;
 		virtual void		onExecute(void) const = 0;
-
-	protected:
-		// constructors
-		Form(const std::string name, const unsigned short reqGradeExec, const unsigned short reqGradeSign);
-
-		// copy constructor
-		Form(const Form& other);
 
 	private:
 		const unsigned short	reqGradeExec;

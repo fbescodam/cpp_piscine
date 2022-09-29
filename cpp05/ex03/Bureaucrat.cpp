@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/23 17:47:15 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/01 18:56:29 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 18:57:16 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,22 @@ bool Bureaucrat::signForm(Form& form)
 	}
 	catch (Form::GradeTooLowException exception) {
 		std::cerr << this->name << " couldn't sign form " << form.getName() << " because their grade is not higher than or equal to the grade required for signing" << std::endl;
+	}
+	return (false);
+}
+
+bool Bureaucrat::executeForm(const Form& form)
+{
+	try {
+		std::cout << this->name << " executed " << form.getName() << std::endl;
+		form.execute(*this);
+		return (true);
+	}
+	catch (Form::NotSignedException exception) {
+		std::cerr << this->name << " couldn't execute form " << form.getName() << " because it has not been signed yet" << std::endl;
+	}
+	catch (Form::GradeTooLowException exception) {
+		std::cerr << this->name << " couldn't execute form " << form.getName() << " because their grade is not higher than or equal to the grade required for execution" << std::endl;
 	}
 	return (false);
 }

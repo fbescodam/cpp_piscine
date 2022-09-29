@@ -6,16 +6,16 @@
 #    By: fbes <fbes@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/05/23 17:47:21 by fbes          #+#    #+#                  #
-#    Updated: 2022/09/29 11:57:52 by fbes          ########   odam.nl          #
+#    Updated: 2022/09/01 19:34:03 by fbes          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		formfillers
+NAME =		intern
 
-HEADERS =	Form.hpp Bureaucrat.hpp ShrubberyCreationForm.hpp \
+HEADERS =	Form.hpp Bureaucrat.hpp ShrubberyCreationForm.hpp Intern.hpp \
 			RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
-SRCS =		Form.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp \
+SRCS =		Form.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp Intern.cpp \
 			RobotomyRequestForm.cpp PresidentialPardonForm.cpp main.cpp
 
 INCLUDES =

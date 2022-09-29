@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/02 14:06:42 by fbes          #+#    #+#                 */
-/*   Updated: 2022/07/02 14:49:58 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/01 16:40:57 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ class Form
 	private:
 		const unsigned short	reqGradeExec;
 		const unsigned short	reqGradeSign;
-		const std::string 		name;
+		const std::string		name;
 		bool					formSigned;
 };
 
