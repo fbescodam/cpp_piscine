@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 13:19:52 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 14:41:41 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/29 15:15:04 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ typedef union input_u {
 
 typedef struct output_s {
 	char	c;
+	bool	c_overflows;
 	int		i;
+	bool	i_overflows;
 	float	f;
 	double	d;
 } output_t;
