@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 12:17:20 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 15:57:04 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/29 16:05:41 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static literal_t getLiteralType(const std::string& str)
 	// float
 	if (str.find_first_of(".") > str.find_first_of("f"))	// check if the f comes after the dot
 		invalidInput();
-	return FLOAT_L;	// TODO: fix float input
+	return FLOAT_L;
 }
 
 static void convertChar(const char& c, output_t& out)
@@ -101,8 +101,10 @@ static void convertDouble(const double& d, output_t& out)
 
 static void printOutput(const output_t& out)
 {
+	// char & int
 	if (!isnan(out.f))
 	{
+		// char
 		if (!out.c_overflows)
 		{
 			if (isprint(out.c))
@@ -112,6 +114,8 @@ static void printOutput(const output_t& out)
 		}
 		else
 			std::cout << "char: overflows" << std::endl;
+		
+		// int
 		if (!out.i_overflows)
 			std::cout << "int: " << out.i << std::endl;
 		else
@@ -119,6 +123,8 @@ static void printOutput(const output_t& out)
 	}
 	else
 		std::cout << "char: impossible" << std::endl << "int: impossible" << std::endl;
+		
+	// float & double (without scientific notation)
 	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << out.f << "f" << std::endl;
 	std::cout << "double: " << out.d << std::endl;
@@ -127,6 +133,7 @@ static void printOutput(const output_t& out)
 int main(int argc, char** argv)
 {
 	std::stringstream	ss;
+	std::string			str_in;
 	input_t				in;
 	literal_t			type;
 	output_t			out;
@@ -138,19 +145,23 @@ int main(int argc, char** argv)
 		return (1);
 	}
 
+	str_in = argv[1];
+
 	try {
-		type = getLiteralType(argv[1]);
-		std::cout << "[DEBUG] Type: " << type << std::endl;
-		ss << argv[1];
+		type = getLiteralType(str_in);
+		if (type == FLOAT_L)
+			str_in.erase(str_in.end() - 1);	// remove the f from the input to ease float conversion
+		ss << str_in;
 		switch (type)
 		{
 			case CHAR_L:
-				convertChar(argv[1][0], out);
+				in.c = str_in[0];
+				convertChar(in.c, out);
 				break;
 			case INT_L:
 				ss >> in.i;
-				temp = std::stol(argv[1]);
-				if (temp < INT_MIN || temp > INT_MAX)
+				temp = std::stol(str_in);
+				if (temp < INT_MIN || temp > INT_MAX)	// check for overflow on input
 					invalidInput();
 				convertInt(in.i, out);
 				break;
