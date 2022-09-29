@@ -6,29 +6,42 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 12:17:20 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 13:53:23 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/29 14:34:08 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cmath>
 #include <iostream>
 #include <sstream>
 #include "scalar.hpp"
 
+static void invalidInput(void)
+{
+	std::cerr << "Error: invalid input" << std::endl;
+	exit(1);
+}
+
 static enum::literal_e getLiteralType(const std::string& str)
 {
-	if (str.find_first_not_of("0123456789.f") != std::string::npos)
+	if (str == "nan")
+		return FLOAT_L;
+	if (str.find_first_not_of("0123456789.f") != std::string::npos
+		|| (str == "f" || str == "."))
 	{
 		if (str.length() != 1)
-		{
-			std::cerr << "Error: too many characters in char input" << std::endl;
-			exit(1);
-		}
+			invalidInput();
 		return CHAR_L;
 	}
 	if (str.find_first_of(".") == std::string::npos)
+	{
+		if (str.find_first_not_of("0123456789") != std::string::npos)
+			invalidInput();
 		return INT_L;
+	}
 	if (str.find_first_of("f") == std::string::npos)
 		return DOUBLE_L;
+	if (str.find_first_of(".") > str.find_first_of("f"))
+		invalidInput();
 	return FLOAT_L;
 }
 
@@ -38,41 +51,49 @@ static void convert_char(char& c)
 		std::cout << "char: " << c << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << (int) c << std::endl;
-	std::cout << "float: " << (float) c << std::endl;
-	std::cout << "double: " << (double) c << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
 static void convert_int(int& i)
 {
-	if (isprint((char) i))
-		std::cout << "char: " << (char) i << std::endl;
+	char c = static_cast<char>(i);
+	if (isprint(c))
+		std::cout << "char: " << c << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << i << std::endl;
-	std::cout << "float: " << (float) i << std::endl;
-	std::cout << "double: " << (double) i << std::endl;
+	std::cout << "float: " << static_cast<float>(i) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(i) << std::endl;
 }
 
 static void convert_float(float& f)
 {
-	if (isprint((char) f))
-		std::cout << "char: " << (char) f << std::endl;
+	if (std::isnan(f))
+		std::cout << "char: impossible" << std::endl << "int: impossible" << std::endl;
 	else
-		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << (int) f << std::endl;
-	std::cout << "float: " << f << std::endl;
-	std::cout << "double: " << (double) f << std::endl;
+	{
+		char c = static_cast<char>(f);
+		if (isprint(c))
+			std::cout << "char: " << c << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
+	}
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
 static void convert_double(double& d)
 {
-	if (isprint((char) d))
-		std::cout << "char: " << (char) d << std::endl;
+	char c = static_cast<char>(d);
+	if (isprint(c))
+		std::cout << "char: " << c << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << (int) d << std::endl;
-	std::cout << "float: " << (float) d << std::endl;
+	std::cout << "int: " << static_cast<int>(d) << std::endl;
+	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
 	std::cout << "double: " << d << std::endl;
 }
 
