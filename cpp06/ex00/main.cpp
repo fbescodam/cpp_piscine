@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 12:17:20 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 15:25:05 by fbes          ########   odam.nl         */
+/*   Updated: 2022/09/29 15:57:04 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,39 @@ static void invalidInput(void)
 
 static literal_t getLiteralType(const std::string& str)
 {
-	if (str == "nan")
+	if (str.length() == 0)	// empty string
+		invalidInput();
+	
+	if (str == "nan" || str == "NaN")	// edge case: NaN is a float
 		return FLOAT_L;
-	if (str.find_first_not_of("-0123456789.f") != std::string::npos
-		|| str == "-" || str == "f" || str == ".")
+
+	// char
+	if (str.find_first_not_of("-0123456789.f") != std::string::npos	// check for non-numeric characters
+		|| str == "-" || str == "f" || str == ".")	// edge case: single characters that also appear in numbers
 	{
-		// TODO: fix spaces
-		if (str.length() != 1)
+		if (str.length() != 1)	// check for more than one character in input
 			invalidInput();
 		return CHAR_L;
 	}
-	if (str.find_first_of(".") == std::string::npos)
+	
+	// int
+	if (str.find_first_of(".") == std::string::npos)	// it's an int if there are no decimals (no dot)
 	{
 		if (str.find_first_not_of("-0123456789") != std::string::npos)
 			invalidInput();
-		if (str.find_first_of("-", 1) != std::string::npos)
+		if (str.find_first_of("-", 1) != std::string::npos)	// check if the minus character only appears at the first character
 			invalidInput();
 		return INT_L;
 	}
-	if (str.find_first_of("f") == std::string::npos)
+
+	// double
+	if (str.back() != 'f')	// it's a double if there is no f at the end of the string
 		return DOUBLE_L;
-	if (str.find_first_of(".") > str.find_first_of("f"))
+	
+	// float
+	if (str.find_first_of(".") > str.find_first_of("f"))	// check if the f comes after the dot
 		invalidInput();
-	return FLOAT_L;
+	return FLOAT_L;	// TODO: fix float input
 }
 
 static void convertChar(const char& c, output_t& out)
@@ -135,8 +145,7 @@ int main(int argc, char** argv)
 		switch (type)
 		{
 			case CHAR_L:
-				ss >> in.c;
-				convertChar(in.c, out);
+				convertChar(argv[1][0], out);
 				break;
 			case INT_L:
 				ss >> in.i;
