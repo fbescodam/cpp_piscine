@@ -6,15 +6,15 @@
 #    By: fbes <fbes@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/05/23 17:47:21 by fbes          #+#    #+#                  #
-#    Updated: 2022/09/29 12:18:49 by fbes          ########   odam.nl          #
+#    Updated: 2022/09/29 16:12:55 by fbes          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		convert
 
-HEADERS =	
+HEADERS =	scalar.hpp
 
-SRCS =		main.cpp
+SRCS =		types.cpp conversions.cpp main.cpp
 
 INCLUDES =
 
