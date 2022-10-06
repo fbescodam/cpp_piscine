@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 16:11:01 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 16:15:49 by fbes          ########   odam.nl         */
+/*   Updated: 2022/10/06 15:14:41 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void invalidInput(void)
 static literal_t checkReturnChar(const std::string& str)
 {
 	if (str.length() != 1)	// check for more than one character in input
+		invalidInput();
+	if (!isprint(str[0]))
 		invalidInput();
 	return CHAR_L;
 }
