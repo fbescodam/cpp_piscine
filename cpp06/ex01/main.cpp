@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:17:16 by fbes          #+#    #+#                 */
-/*   Updated: 2022/10/06 15:26:01 by fbes          ########   odam.nl         */
+/*   Updated: 2022/10/06 15:29:07 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int main(void)
 	deserialized = deserialize(serialized);
 	std::cout << "Deserialized pointer: " << deserialized << std::endl;
 	std::cout << "Deserialized content: " << deserialized->content << std::endl;
+
+	deserialized->content = 7;
+	std::cout << "Original content after change: " << data.content << std::endl;
+	std::cout << "Deserialized content after change: " << deserialized->content << std::endl;
 
 	return (0);
 }
