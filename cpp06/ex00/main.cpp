@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 12:17:20 by fbes          #+#    #+#                 */
-/*   Updated: 2022/09/29 16:12:16 by fbes          ########   odam.nl         */
+/*   Updated: 2022/10/06 15:11:46 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
 
 	try {
 		type = getLiteralType(str_in);
-		if (type == FLOAT_L)
+		if (type == FLOAT_L && str_in.back() == 'f')
 			str_in.erase(str_in.end() - 1);	// remove the f from the input to ease float conversion
 		ss << str_in;
 		switch (type)
