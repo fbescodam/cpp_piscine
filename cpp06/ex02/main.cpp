@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:42:22 by fbes          #+#    #+#                 */
-/*   Updated: 2022/10/06 16:00:29 by fbes          ########   odam.nl         */
+/*   Updated: 2022/10/06 16:02:04 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void identify(Base& p)
 
 int main(void)
 {
+	srand(time(NULL));
 	Base*	base;
 	for (int i = 0; i < 10; i++)
 	{
