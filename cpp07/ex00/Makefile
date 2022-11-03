@@ -6,13 +6,13 @@
 #    By: fbes <fbes@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/05/23 17:47:21 by fbes          #+#    #+#                  #
-#    Updated: 2022/11/03 18:19:33 by fbes          ########   odam.nl          #
+#    Updated: 2022/11/03 18:30:38 by fbes          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		templates
 
-HEADERS =	templates.hpp
+HEADERS =	whatever.hpp
 
 SRCS =		main.cpp
 
