@@ -6,13 +6,14 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:07 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/11 12:32:35 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/11 14:05:46 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <iterator>
 #include <algorithm>
+// #include <iostream>
 
 // constructor
 Span::Span(const unsigned int N)
@@ -64,22 +65,12 @@ void Span::addNumber(const int n)
 	this->used++;
 }
 
-template <typename Container>
-void Span::addNumbers(const Container& container, typename Container::const_iterator begin, typename Container::const_iterator end)
-{
-	typename Container::const_iterator it = begin;
-	while (it != end)
-	{
-		this->addNumber(container.at(it));
-		it++;
-	}
-}
-
 void Span::addNumbers(const int* begin, const int* end)
 {
 	const int* it = begin;
 	while (it != end)
 	{
+		// std::cout << "Adding num " << *it << std::endl;
 		this->addNumber(*it);
 		it++;
 	}

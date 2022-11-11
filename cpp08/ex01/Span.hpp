@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:11 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/11 12:24:30 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/11 13:58:38 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ public:
 	};
 
 	// member functions
-					template <typename Container>
-	void			addNumbers(const Container& container, typename Container::const_iterator begin, typename Container::const_iterator end);
-
 	void			addNumbers(const int* begin, const int* end);
 	void			addNumber(const int n);
 	unsigned int	shortestSpan(void) const;
