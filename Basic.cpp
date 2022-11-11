@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/20 05:53:18 by fbes          #+#    #+#                 */
-/*   Updated: 2022/05/20 06:01:53 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/11 11:27:12 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Basic::Basic(void)
 // copy constructor
 Basic::Basic(const Basic& other)
 {
-	// TODO: copy things over from other into this
+	*this = other;
 }
 
 
