@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:07 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/11 12:30:36 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/11 12:32:35 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,20 @@ unsigned int Span::shortestSpan(void) const
 	if (this->used < 2)
 		throw Span::TooFewNumbersException();
 
+	// get a clone of the numbers and sort it
 	int* clone = this->cloneNumbers();
 	std::sort(clone, clone + this->used);
+
+	// find the smallest span by comparing the absolute difference with i and i+1
 	unsigned int smallestSpan = UINT_MAX;
-	for (int* it = clone; it < clone + this->size - 1; it++)
+	for (int* it = clone; it < clone + this->used - 1; it++)
 	{
 		unsigned int span = std::max(*it, *(it + 1)) - std::min(*it, *(it + 1));
 		if (span < smallestSpan)
 			smallestSpan = span;
 	}
+
+	// free the clone and return the smallest span
 	delete[] clone;
 	return (smallestSpan);
 }
@@ -116,11 +121,16 @@ unsigned int Span::longestSpan(void) const
 	if (this->used < 2)
 		throw Span::TooFewNumbersException();
 
+	// get a clone of the numbers and sort it
 	int* clone = this->cloneNumbers();
 	std::sort(clone, clone + this->used);
+
+	// get the difference between the first and the last number
 	int first = clone[0];
 	int last = clone[this->used - 1];
 	unsigned int span = std::max(first, last) - std::min(first, last);
+
+	// free the clone and return the longest span
 	delete[] clone;
 	return (span);
 }
