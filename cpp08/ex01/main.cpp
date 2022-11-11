@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:04 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/11 14:06:19 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/11 14:08:23 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,10 @@ void iterativeAdd(void) {
 
 	std::cout << std::endl << "Iterative test with a small Span, only 0" << std::endl;
 	Span spSmall = Span(5);
-	int* inputArr = new int[5];
-	for (size_t i = 0; i < 5; i++)
-		inputArr[i] = 0;
-	spSmall.addNumbers(inputArr, inputArr + 5);
+	int test[] = {0, 0, 0, 0, 0};
+	spSmall.addNumbers(std::begin(test), std::end(test));
 	std::cout << spSmall.shortestSpan() << std::endl;
 	std::cout << spSmall.longestSpan() << std::endl;
-	delete[] inputArr;
 }
 
 void breakIt(void)
