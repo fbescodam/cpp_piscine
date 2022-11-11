@@ -6,12 +6,11 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 19:08:06 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/03 20:28:08 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/11 11:23:02 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <array>
 
 template <typename T>
 class Array
