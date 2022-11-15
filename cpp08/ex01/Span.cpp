@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:07 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/15 11:33:35 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/15 11:52:26 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,6 @@ void Span::addNumbers(const T source, typename T::const_iterator start, typename
 		throw Span::TooManyNumbersException();
 	this->container.insert(this->container.end(), start, end);
 	source.end(); // to make the compiler stop screaming about the unused source parameter
-}
-
-void Span::addNumbers(const int* start, const int* end)
-{
-	for (const int* it = start; it < end; it++)
-		this->container.push_back(*it);
 }
 
 unsigned int Span::shortestSpan(void) const

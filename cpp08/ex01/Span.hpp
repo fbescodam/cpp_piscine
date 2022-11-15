@@ -6,7 +6,7 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:11 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/15 11:32:46 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/15 11:52:22 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ public:
 	// member functions
 	template <typename T>
 	void			addNumbers(const T source, typename T::const_iterator start, typename T::const_iterator end);
-	void 			addNumbers(const int* start, const int* end);
 	void			addNumber(const int n);
 	unsigned int	shortestSpan(void) const;
 	unsigned int	longestSpan(void) const;
