@@ -6,12 +6,13 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:11 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/11 13:58:38 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/15 11:32:46 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <exception>
+#include <list>
 
 class Span
 {
@@ -39,17 +40,15 @@ public:
 	};
 
 	// member functions
-	void			addNumbers(const int* begin, const int* end);
+	template <typename T>
+	void			addNumbers(const T source, typename T::const_iterator start, typename T::const_iterator end);
+	void 			addNumbers(const int* start, const int* end);
 	void			addNumber(const int n);
 	unsigned int	shortestSpan(void) const;
 	unsigned int	longestSpan(void) const;
 
 private:
-	// helper functions
-	int*			cloneNumbers(void) const;
-
 	// attributes
 	unsigned int	size;
-	unsigned int	used;
-	int*			numbers;
+	std::list<int>	container;
 };

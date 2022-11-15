@@ -6,13 +6,14 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:04 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/11 14:08:23 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/15 11:32:52 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <iostream>
 #include <list>
+#include <vector>
 
 void basic(void)
 {
@@ -43,19 +44,20 @@ void iterativeAdd(void) {
 	std::cout << std::endl << "Iterative test with a big Span and random numbers" << std::endl;
 	unsigned int testSize = 15000;
 	Span spBig = Span(testSize);
-	int* inputArrBig = new int[testSize];
+	std::list<int> bigList;
 	srand(time(nullptr));
 	for (size_t i = 0; i < testSize; i++)
-		inputArrBig[i] = rand();
-	spBig.addNumbers(inputArrBig, inputArrBig + testSize);
+		bigList.push_back(rand());
+	spBig.addNumbers(bigList, bigList.begin(), bigList.end());
 	std::cout << spBig.shortestSpan() << std::endl;
 	std::cout << spBig.longestSpan() << std::endl;
-	delete[] inputArrBig;
 
 	std::cout << std::endl << "Iterative test with a small Span, only 0" << std::endl;
 	Span spSmall = Span(5);
-	int test[] = {0, 0, 0, 0, 0};
-	spSmall.addNumbers(std::begin(test), std::end(test));
+	std::list<int> smallList;
+	for (size_t i = 0; i < 5; i++)
+		smallList.push_back(0);
+	spSmall.addNumbers(smallList, smallList.begin(), smallList.end());
 	std::cout << spSmall.shortestSpan() << std::endl;
 	std::cout << spSmall.longestSpan() << std::endl;
 }

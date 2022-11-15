@@ -6,12 +6,11 @@
 /*   By: fbes <fbes@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 11:22:07 by fbes          #+#    #+#                 */
-/*   Updated: 2022/11/11 14:05:46 by fbes          ########   odam.nl         */
+/*   Updated: 2022/11/15 11:33:35 by fbes          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <iterator>
 #include <algorithm>
 // #include <iostream>
 
@@ -19,8 +18,6 @@
 Span::Span(const unsigned int N)
 {
 	this->size = N;
-	this->used = 0;
-	this->numbers = new int[N];
 }
 
 // copy constructor
@@ -33,17 +30,14 @@ Span::Span(const Span& other)
 Span& Span::operator=(const Span& other)
 {
 	this->size = other.size;
-	this->numbers = new int[other.size];
-	this->used = other.used;
-	for (unsigned int i = 0; i < other.size; i++)
-		this->numbers[i] = other.numbers[i];
+	this->addNumbers(other.container, other.container.begin(), other.container.end());
 	return (*this);
 }
 
 // destructor
 Span::~Span(void)
 {
-	delete[] this->numbers;
+
 }
 
 // exceptions
@@ -59,69 +53,60 @@ const char*	Span::TooFewNumbersException::what(void) const _NOEXCEPT
 // member functions
 void Span::addNumber(const int n)
 {
-	if (this->used >= this->size)
+	if (this->container.size() > this->size)
 		throw Span::TooManyNumbersException();
-	this->numbers[this->used] = n;
-	this->used++;
+	this->container.push_back(n);
 }
 
-void Span::addNumbers(const int* begin, const int* end)
+template <typename T>
+void Span::addNumbers(const T source, typename T::const_iterator start, typename T::const_iterator end)
 {
-	const int* it = begin;
-	while (it != end)
-	{
-		// std::cout << "Adding num " << *it << std::endl;
-		this->addNumber(*it);
-		it++;
-	}
+	unsigned long dist = static_cast<unsigned long>(std::distance(start, end));
+	if (dist > (this->size - this->container.size()))
+		throw Span::TooManyNumbersException();
+	this->container.insert(this->container.end(), start, end);
+	source.end(); // to make the compiler stop screaming about the unused source parameter
 }
 
-int* Span::cloneNumbers(void) const
+void Span::addNumbers(const int* start, const int* end)
 {
-	int* clone = new int[this->size];
-	for (unsigned int i = 0; i < this->size; i++)
-		clone[i] = this->numbers[i];
-	return (clone);
+	for (const int* it = start; it < end; it++)
+		this->container.push_back(*it);
 }
 
 unsigned int Span::shortestSpan(void) const
 {
-	if (this->used < 2)
+	if (this->container.size() < 2)
 		throw Span::TooFewNumbersException();
 
-	// get a clone of the numbers and sort it
-	int* clone = this->cloneNumbers();
-	std::sort(clone, clone + this->used);
+	std::list<int> clone(this->container);
+	// std::sort(clone.begin(), clone.end());
+	clone.sort();
 
-	// find the smallest span by comparing the absolute difference with i and i+1
 	unsigned int smallestSpan = UINT_MAX;
-	for (int* it = clone; it < clone + this->used - 1; it++)
+	for (std::list<int>::iterator it = clone.begin(); it != clone.end(); it++)
 	{
-		unsigned int span = std::max(*it, *(it + 1)) - std::min(*it, *(it + 1));
+		std::list<int>::iterator nxt = std::next(it);
+		if (nxt == clone.end())
+			break;
+		unsigned int span = std::max(*it, *nxt) - std::min(*it, *nxt);
 		if (span < smallestSpan)
 			smallestSpan = span;
 	}
-
-	// free the clone and return the smallest span
-	delete[] clone;
 	return (smallestSpan);
 }
 
 unsigned int Span::longestSpan(void) const
 {
-	if (this->used < 2)
+	if (this->container.size() < 2)
 		throw Span::TooFewNumbersException();
 
-	// get a clone of the numbers and sort it
-	int* clone = this->cloneNumbers();
-	std::sort(clone, clone + this->used);
+	std::list<int> clone(this->container);
+	// std::sort(clone.begin(), clone.end());
+	clone.sort();
 
-	// get the difference between the first and the last number
-	int first = clone[0];
-	int last = clone[this->used - 1];
+	int first = clone.front();
+	int last = clone.back();
 	unsigned int span = std::max(first, last) - std::min(first, last);
-
-	// free the clone and return the longest span
-	delete[] clone;
 	return (span);
 }
